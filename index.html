@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CASA Consulting LLC - Bitcoin Security & Recovery Specialists</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #0021A5 0%, #FA4616 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #0021A5;
+            text-decoration: none;
+            letter-spacing: -1px;
+        }
+
+        .logo span {
+            color: #FA4616;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #666;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+        }
+
+        nav a:hover {
+            color: #FA4616;
+            background: rgba(250, 70, 22, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .hero {
+            padding: 6rem 0;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><polygon fill="rgba(255,255,255,0.05)" points="0,0 1000,300 1000,1000 0,700"/></svg>');
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            animation: fadeInUp 1s ease 0.3s both;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .services {
+            padding: 5rem 0;
+            background: white;
+        }
+
+        .services h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #0021A5;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .service-card {
+            background: linear-gradient(145deg, #f8f9fa, #e9ecef);
+            padding: 2rem;
+            border-radius: 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(250, 70, 22, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(250, 70, 22, 0.1), transparent);
+            transition: all 0.6s ease;
+        }
+
+        .service-card:hover::before {
+            left: 100%;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            border-color: #FA4616;
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: #FA4616;
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #0021A5;
+        }
+
+        .service-card p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .links-section {
+            padding: 4rem 0;
+            background: linear-gradient(135deg, #0021A5 0%, #003399 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .links-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .links-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .link-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(250, 70, 22, 0.3);
+            text-decoration: none;
+            color: white;
+            display: block;
+        }
+
+        .link-card:hover {
+            transform: translateY(-5px) scale(1.02);
+            background: rgba(250, 70, 22, 0.2);
+            border-color: #FA4616;
+            box-shadow: 0 15px 30px rgba(250, 70, 22, 0.3);
+        }
+
+        .link-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #FA4616;
+        }
+
+        .link-card p {
+            opacity: 0.9;
+        }
+
+        footer {
+            background: #0021A5;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .header-content {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .footer-content {
+                justify-content: center;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <a href="#" class="logo">CASA<span>.</span></a>
+                <nav>
+                    <ul>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#security">Resources</a></li>
+                        <li><a href="#recommendations">Companies</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>CASA Consulting LLC</h1>
+                <p>Bitcoin Security & Recovery Specialists. We help individuals and businesses secure their Bitcoin, recover lost wallets, and implement robust storage solutions.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="services" id="services">
+        <div class="container">
+            <h2>Our Bitcoin Services</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">🔒</div>
+                    <h3>Security Audits</h3>
+                    <p>Comprehensive Bitcoin security assessments, wallet reviews, and implementation of best practices to protect your digital assets from threats.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🔧</div>
+                    <h3>Wallet Recovery</h3>
+                    <p>Expert assistance recovering lost or corrupted Bitcoin wallets, seed phrase recovery, and troubleshooting hardware wallet issues.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">❄️</div>
+                    <h3>Cold Storage Setup</h3>
+                    <p>Design and implement secure cold storage solutions, multi-signature wallets, and air-gapped systems for maximum Bitcoin protection.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🛡️</div>
+                    <h3>Emergency Planning</h3>
+                    <p>Create robust backup and recovery plans, inheritance solutions, and emergency procedures to ensure your Bitcoin is never lost.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">📚</div>
+                    <h3>Education & Training</h3>
+                    <p>Workshops and training sessions on Bitcoin security fundamentals, wallet management, and safe practices for individuals and teams.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">⚡</div>
+                    <h3>Technical Support</h3>
+                    <p>Ongoing technical support for Bitcoin-related issues, troubleshooting, and consultation on security implementations.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🌩️</div>
+                    <h3>Lightning Network</h3>
+                    <p>Lightning node setup, channel management, and Lightning Network integration for faster, cheaper Bitcoin transactions.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🕵️</div>
+                    <h3>Privacy Consulting</h3>
+                    <p>CoinJoin implementation, transaction privacy analysis, and strategies to enhance your Bitcoin transaction privacy.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🚨</div>
+                    <h3>Incident Response</h3>
+                    <p>Emergency response for Bitcoin security breaches, compromise assessment, and recovery planning for businesses.</p>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 2rem;">
+                <p style="font-size: 1.2rem; color: #666; font-style: italic;">
+                    "Your Bitcoin security is our priority – we provide technical expertise, not financial advice."
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="services" id="security" style="background: #f8f9fa;">
+        <div class="container">
+            <h2>Security Resources</h2>
+            <p style="text-align: center; font-size: 1.2rem; color: #666; margin-bottom: 3rem;">Essential tools and resources for Bitcoin security</p>
+            <div class="links-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; justify-items: center;">
+                <div style="background: linear-gradient(145deg, #f8f9fa, #e9ecef); padding: 2rem; border-radius: 20px; text-align: center; transition: all 0.3s ease; border: 1px solid rgba(250, 70, 22, 0.1); color: inherit; display: block; position: relative; overflow: hidden; max-width: 400px;">
+                    <div style="font-size: 3rem; margin-bottom: 1rem; color: #FA4616;">🔒</div>
+                    <h3 style="font-size: 1.5rem; margin-bottom: 1rem; color: #0021A5;">Security Checklist</h3>
+                    <p style="color: #666; line-height: 1.6;">Comprehensive security audit checklist to ensure your Bitcoin setup follows industry best practices.</p>
+                </div>
+                <div style="background: linear-gradient(145deg, #f8f9fa, #e9ecef); padding: 2rem; border-radius: 20px; text-align: center; transition: all 0.3s ease; border: 1px solid rgba(250, 70, 22, 0.1); color: inherit; display: block; position: relative; overflow: hidden; max-width: 400px;">
+                    <div style="font-size: 3rem; margin-bottom: 1rem; color: #FA4616;">📋</div>
+                    <h3 style="font-size: 1.5rem; margin-bottom: 1rem; color: #0021A5;">Recovery Procedures</h3>
+                    <p style="color: #666; line-height: 1.6;">Step-by-step guides for wallet recovery scenarios and emergency access procedures.</p>
+                </div>
+                <div style="background: linear-gradient(145deg, #f8f9fa, #e9ecef); padding: 2rem; border-radius: 20px; text-align: center; transition: all 0.3s ease; border: 1px solid rgba(250, 70, 22, 0.1); color: inherit; display: block; position: relative; overflow: hidden; max-width: 400px;">
+                    <div style="font-size: 3rem; margin-bottom: 1rem; color: #FA4616;">🛠️</div>
+                    <h3 style="font-size: 1.5rem; margin-bottom: 1rem; color: #0021A5;">Recommended Tools</h3>
+                    <p style="color: #666; line-height: 1.6;">Curated list of trusted hardware wallets, software tools, and security devices for Bitcoin storage.</p>
+                </div>
+                <a href="https://brewgator.substack.com" target="_blank" style="background: linear-gradient(145deg, #f8f9fa, #e9ecef); padding: 2rem; border-radius: 20px; text-align: center; transition: all 0.3s ease; border: 1px solid rgba(250, 70, 22, 0.1); text-decoration: none; color: inherit; display: block; position: relative; overflow: hidden; max-width: 400px;" onmouseover="this.style.transform='translateY(-10px)'; this.style.borderColor='#FA4616'; this.style.boxShadow='0 20px 40px rgba(0,0,0,0.1)';" onmouseout="this.style.transform='translateY(0)'; this.style.borderColor='rgba(250, 70, 22, 0.1)'; this.style.boxShadow='none';">
+                    <div style="font-size: 3rem; margin-bottom: 1rem; color: #FA4616;">📝</div>
+                    <h3 style="font-size: 1.5rem; margin-bottom: 1rem; color: #0021A5;">Bitcoin Insights Blog</h3>
+                    <p style="color: #666; line-height: 1.6;">Read our latest articles on Bitcoin security, technical analysis, and industry insights on Substack.</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section class="links-section" id="recommendations" style="background: linear-gradient(135deg, #0021A5 0%, #003399 100%); color: white; text-align: center; padding: 4rem 0;">
+        <div class="container">
+            <h2 style="font-size: 2.5rem; margin-bottom: 2rem;">Recommended Bitcoin Companies</h2>
+            <p style="font-size: 1.2rem; margin-bottom: 3rem; opacity: 0.9;">Trusted Bitcoin-only companies we recommend for various services</p>
+            <div class="links-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; margin-top: 3rem;">
+                <div class="link-card" style="background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); padding: 2rem; border-radius: 20px; transition: all 0.3s ease; border: 1px solid rgba(250, 70, 22, 0.3); color: white; display: block;">
+                    <h3 style="font-size: 1.5rem; margin-bottom: 1rem; color: #FA4616;">Hardware Wallets</h3>
+                    <p style="opacity: 0.9; margin-bottom: 0.5rem;"><strong>Coldcard:</strong> Air-gapped Bitcoin hardware wallet</p>
+                    <p style="opacity: 0.9; margin-bottom: 0.5rem;"><strong>SeedSigner:</strong> DIY Bitcoin signing device</p>
+                    <p style="opacity: 0.9;"><strong>Foundation Passport:</strong> Open-source hardware wallet</p>
+                </div>
+                <div class="link-card" style="background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); padding: 2rem; border-radius: 20px; transition: all 0.3s ease; border: 1px solid rgba(250, 70, 22, 0.3); color: white; display: block;">
+                    <h3 style="font-size: 1.5rem; margin-bottom: 1rem; color: #FA4616;">Exchanges & Trading</h3>
+                    <p style="opacity: 0.9; margin-bottom: 0.5rem;"><strong>Swan Bitcoin:</strong> Bitcoin-only investment platform</p>
+                    <p style="opacity: 0.9; margin-bottom: 0.5rem;"><strong>River Financial:</strong> Bitcoin brokerage & custody</p>
+                    <p style="opacity: 0.9;"><strong>Strike:</strong> Lightning-powered Bitcoin app</p>
+                </div>
+                <div class="link-card" style="background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); padding: 2rem; border-radius: 20px; transition: all 0.3s ease; border: 1px solid rgba(250, 70, 22, 0.3); color: white; display: block;">
+                    <h3 style="font-size: 1.5rem; margin-bottom: 1rem; color: #FA4616;">Education & Media</h3>
+                    <p style="opacity: 0.9; margin-bottom: 0.5rem;"><strong>Bitcoin Magazine:</strong> Leading Bitcoin news & education</p>
+                    <p style="opacity: 0.9; margin-bottom: 0.5rem;"><strong>Unchained Capital:</strong> Bitcoin financial services</p>
+                    <p style="opacity: 0.9;"><strong>Casa:</strong> Bitcoin self-custody solutions</p>
+                </div>
+                <div class="link-card" style="background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); padding: 2rem; border-radius: 20px; transition: all 0.3s ease; border: 1px solid rgba(250, 70, 22, 0.3); color: white; display: block;">
+                    <h3 style="font-size: 1.5rem; margin-bottom: 1rem; color: #FA4616;">Software & Tools</h3>
+                    <p style="opacity: 0.9; margin-bottom: 0.5rem;"><strong>Sparrow Wallet:</strong> Desktop Bitcoin wallet</p>
+                    <p style="opacity: 0.9; margin-bottom: 0.5rem;"><strong>Samourai Wallet:</strong> Privacy-focused mobile wallet</p>
+                    <p style="opacity: 0.9;"><strong>Electrum:</strong> Lightweight Bitcoin wallet</p>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 3rem; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.2);">
+                <p style="font-size: 1rem; opacity: 0.8;"><em>These recommendations are based on our technical assessment. Always do your own research before using any service.</em></p>
+            </div>
+        </div>
+    </section>
+
+    <section class="services" id="contact" style="background: #f8f9fa; padding: 5rem 0;">
+        <div class="container">
+            <h2 style="text-align: center; font-size: 2.5rem; margin-bottom: 3rem; color: #0021A5;">Get in Touch</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 3rem; align-items: center;">
+                <div style="text-align: center;">
+                    <div style="font-size: 4rem; margin-bottom: 1.5rem; color: #FA4616;">📧</div>
+                    <h3 style="font-size: 1.8rem; margin-bottom: 1rem; color: #0021A5;">Email Us</h3>
+                    <p style="color: #666; margin-bottom: 1.5rem; line-height: 1.6;">Ready to secure your Bitcoin? Contact us for a consultation on your security needs.</p>
+                    <a href="mailto:info@casaconsulting.org" style="display: inline-block; background: linear-gradient(135deg, #0021A5 0%, #FA4616 100%); color: white; padding: 1rem 2rem; border-radius: 30px; text-decoration: none; font-weight: bold; font-size: 1.1rem; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(0,0,0,0.2);" onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 8px 25px rgba(0,0,0,0.3)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 15px rgba(0,0,0,0.2)';">
+                        info@casaconsulting.org
+                    </a>
+                </div>
+                <div style="background: white; padding: 2.5rem; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); border: 1px solid rgba(250, 70, 22, 0.1);">
+                    <h3 style="font-size: 1.5rem; margin-bottom: 1.5rem; color: #0021A5; text-align: center;">How We Can Help</h3>
+                    <ul style="list-style: none; padding: 0; margin: 0;">
+                        <li style="display: flex; align-items: center; margin-bottom: 1rem; color: #666;">
+                            <span style="color: #FA4616; font-size: 1.2rem; margin-right: 0.5rem;">🔒</span>
+                            Bitcoin security audits and assessments
+                        </li>
+                        <li style="display: flex; align-items: center; margin-bottom: 1rem; color: #666;">
+                            <span style="color: #FA4616; font-size: 1.2rem; margin-right: 0.5rem;">🔧</span>
+                            Wallet recovery and troubleshooting
+                        </li>
+                        <li style="display: flex; align-items: center; margin-bottom: 1rem; color: #666;">
+                            <span style="color: #FA4616; font-size: 1.2rem; margin-right: 0.5rem;">❄️</span>
+                            Cold storage and multi-sig setup
+                        </li>
+                        <li style="display: flex; align-items: center; margin-bottom: 1rem; color: #666;">
+                            <span style="color: #FA4616; font-size: 1.2rem; margin-right: 0.5rem;">⚡</span>
+                            Lightning Network implementation
+                        </li>
+                        <li style="display: flex; align-items: center; margin-bottom: 1rem; color: #666;">
+                            <span style="color: #FA4616; font-size: 1.2rem; margin-right: 0.5rem;">📚</span>
+                            Bitcoin security training and education
+                        </li>
+                        <li style="display: flex; align-items: center; color: #666;">
+                            <span style="color: #FA4616; font-size: 1.2rem; margin-right: 0.5rem;">🚨</span>
+                            Emergency incident response
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 3rem; padding: 2rem; background: linear-gradient(135deg, #0021A5 0%, #FA4616 100%); border-radius: 20px; color: white;">
+                <p style="font-size: 1.1rem; margin-bottom: 1rem; font-weight: bold;">Ready to Get Started?</p>
+                <p style="opacity: 0.9; margin: 0;">Drop us an email describing your Bitcoin security needs, and we'll get back to you within 24 hours with next steps.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer style="background: #0021A5; color: white; text-align: center; padding: 2rem 0;">
+        <div class="container">
+            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; margin-bottom: 1rem;">
+                <div>
+                    <p>&copy; 2025 CASA Consulting LLC. All rights reserved.</p>
+                </div>
+                <div>
+                    <p>Bitcoin Security & Recovery Specialists</p>
+                </div>
+            </div>
+            <div style="text-align: center; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.2);">
+                <p style="font-size: 0.9rem; opacity: 0.8;"><strong>Disclaimer:</strong> We provide technical services only. This is not financial advice. Always do your own research and consult with qualified financial advisors for investment decisions.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Add smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Add scroll effect to header
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(255, 255, 255, 0.98)';
+            } else {
+                header.style.background = 'rgba(255, 255, 255, 0.95)';
+            }
+        });
+
+        // Add intersection observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe service cards
+        document.querySelectorAll('.service-card').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(30px)';
+            card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(card);
+        });
+    </script>
+</body>
+</html>
